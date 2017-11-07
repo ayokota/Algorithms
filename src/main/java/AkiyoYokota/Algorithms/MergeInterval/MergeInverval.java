@@ -6,32 +6,30 @@ import java.util.List;
 
 public class MergeInverval {
 	
-//	public static List<Interval> merge (List<Interval> intervals) {
-//		if(intervals== null || intervals.size()<2)
-//			return intervals;
-//		
-//		
-//		List<Interval> result = new LinkedList<Interval> ();
-//		Collections.sort(intervals, new IntervalComparator());
-//		
-//		Interval current = intervals.get(0);
-//		for(Integer i = 1; i < intervals.size(); i++) {
-//			while( i < intervals.size() && current.getEnd() > intervals.get(i).getStart() ) {
-//				current.setEnd(Math.max(current.getEnd(), intervals.get(i).getEnd()));
-//				i++;
-//			} 
-//
-//			if(i < intervals.size()) {
-//				result.add(current);
-//				current = intervals.get(i);
-//				if(i == (intervals.size()-1)) {
-//					result.add(current);
-//				}
-//			}
-//		}
-//		
-//		return result;
-//	}
+	public static List<Interval> insert(List<Interval> intervals, Interval newInterval) {
+		if(intervals== null )
+			return intervals;
+		
+		if(intervals.size()==1) {
+			
+		}
+		
+		List<Interval> result = new LinkedList<Interval> ();
+		
+		for(Interval interval : intervals ) {
+			if(interval.getEnd() < newInterval.getStart()) {
+				result.add(interval);
+			} else if(interval.getStart() > newInterval.getEnd()) {
+				result.add(newInterval);
+				newInterval = interval;
+			} else if (interval.getEnd()>= newInterval.getStart() || interval.getStart() <= newInterval.getEnd()){
+				newInterval = new Interval (Math.min(interval.getStart(), newInterval.getStart()), Math.max(newInterval.getEnd(), interval.getEnd()));
+			}
+		}
+		result.add(newInterval);
+		
+		return result;
+	}
 
 	
 	public static List<Interval> merge (List<Interval> intervals) {
@@ -87,6 +85,9 @@ public class MergeInverval {
 		System.out.println("before: " + intervals2);
 		
 		System.out.println("after: " + merge(intervals2));
+		
+		System.out.println("insert: " + insert(merge(intervals2), new Interval(14, 18)));
+
 	}
 	
 
