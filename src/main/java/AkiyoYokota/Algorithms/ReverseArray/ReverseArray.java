@@ -21,6 +21,20 @@ public class ReverseArray {
 		return arr;
 	}
 	
+	public static int [] reverseRecur(int[] arr, int pos) {
+		if(arr.length<2)
+			return arr;
+		if(pos >= arr.length/2) {
+			return arr;
+		}
+		
+		int temp = arr[pos];
+		arr[pos] = arr[arr.length-1-pos];
+		arr[arr.length-1-pos] = temp;
+		return reverseRecur(arr, pos+1);
+		
+	}
+	
 	public static void main (String [] args) {
 		//System.out.println(7/2);
 		
@@ -29,6 +43,12 @@ public class ReverseArray {
 		print( reverse(new int[] {1,2}) ) ;
 		print( reverse(new int[] {1}) ) ;
 		print( reverse(new int[] {0}) ) ;
+		
+		print( reverseRecur(new int[] {1,2,3,4,5,6,7,8 },0) ) ;
+		print( reverseRecur(new int[] {1,2,3,4,5,6,7 },0) ) ;
+		print( reverseRecur(new int[] {1,2},0) ) ;
+		print( reverseRecur(new int[] {1},0) ) ;
+		print( reverseRecur(new int[] {0},0) ) ;
 
 	}
 }
