@@ -60,5 +60,20 @@ public class Min_Cost_to_Connect_All_Nodes {
                         {5, 6, 5},
                 }
                 ));
+
+        System.out.println( solution(5,
+                new int[][] {
+                        {1, 2},
+                        {2, 3},
+                        {3, 4},
+                        {4, 5},
+                        {1, 5}
+                },
+                new int[][] {
+                        {1, 2, 12},
+                        {3, 4, 30},
+                        {1, 5, 8}
+                }
+        ));
     }
 }
