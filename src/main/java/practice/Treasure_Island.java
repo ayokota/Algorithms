@@ -45,7 +45,7 @@ public class Treasure_Island {
         }
 
 
-        return steps;
+        return -1;
     }
 
     public boolean isPossiblePath(char[][] island, int x, int y, boolean[][] visited) {
@@ -69,6 +69,15 @@ public class Treasure_Island {
                 ti.solution(new char[][] {
                         {'O', 'O', 'O', 'O'},
                         {'D', 'D', 'D', 'O'},
+                        {'O', 'O', 'O', 'O'},
+                        {'X', 'D', 'D', 'O'},
+                })
+        );
+
+        System.out.println(
+                ti.solution(new char[][] {
+                        {'O', 'O', 'O', 'O'},
+                        {'D', 'D', 'D', 'D'},
                         {'O', 'O', 'O', 'O'},
                         {'X', 'D', 'D', 'O'},
                 })
