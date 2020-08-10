@@ -1,5 +1,7 @@
 package practice;
 
+import com.google.gson.Gson;
+
 /**
  * Created by ayokota on 8/5/20.
  */
@@ -7,23 +9,24 @@ public class Max_Of_Min_Altitudes {
 
 
     public static int solution(int[][] grid) {
-        int m = grid.length;
-        int n = grid[0].length;
+        int n = grid.length;
+        int m = grid[0].length;
 
-        int[][] opt = new int[m][n];
-        opt[0][0] = Integer.MAX_VALUE;  //very important
-        grid[m-1][n-1] = Integer.MAX_VALUE;
+        int[][] dp = new int[n][m];
+        dp[0][0] = Integer.MAX_VALUE;
+        grid[n - 1][m - 1] = Integer.MAX_VALUE;
 
-        //opt[i][j] = Min(Max(opt[i-1][j], opt[i][j-1]), grid[i][j]）
-        for(int i = 0; i < m; i++){
-            for(int j = 0; j < n; j++){
-                if(i==0 && j==0) continue;
-                int upper = i==0 ? Integer.MIN_VALUE : opt[i-1][j];
-                int left = j==0 ? Integer.MIN_VALUE : opt[i][j-1];
-                opt[i][j] = Math.min(grid[i][j], Math.max(upper, left));
+        for(int i = 0; i < n; i++) {
+            for(int j = 0; j < m; j++) {
+                if(i == 0 && j == 0) continue;
+                int up = i == 0 ? Integer.MIN_VALUE : dp[i - 1][j];
+                int left = j == 0 ? Integer.MIN_VALUE : dp[i][j - 1];
+                dp[i][j] = Math.min(grid[i][j], Math.max(up, left));
             }
         }
-        return opt[m-1][n-1];
+        System.out.println(new Gson().toJson(dp));
+        return dp[n - 1][m - 1];
+
     }
 
 
