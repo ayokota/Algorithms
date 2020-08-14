@@ -66,6 +66,20 @@ public class Treez {
             return 1 + getDistance(root.right, val);
     }
 
+    public boolean sameOrder(TreeNode a, TreeNode b) {
+        if(a == null || b == null)
+            return true;
+
+        if(!sameOrder(a.left, b.left))
+            return false;
+        if(a.val != b.val) {
+            return false;
+        }
+        if(!sameOrder(a.right, b.right))
+            return false;
+        return true;
+    }
+
     public static void main(String [] args) {
         Treez treez = new Treez();
         TreeNode root = treez.insert(null, 5);
@@ -91,5 +105,18 @@ public class Treez {
         treez.insert(root2, 35);
         System.out.println(treez.distanceBetweenNodes(root, 5, 35));
 
+        TreeNode root3 = treez.insert(null, 5);
+        treez.insert(root3, 3);
+        treez.insert(root3, 1);
+        treez.insert(root3, 7);
+        treez.insert(root3, 6);
+
+        TreeNode root4 = treez.insert(null, 3);
+        treez.insert(root3, 1);
+        treez.insert(root3, 6);
+        treez.insert(root3, 5);
+        treez.insert(root3, 7);
+
+        System.out.println(treez.sameOrder(root3, root4));
     }
 }
