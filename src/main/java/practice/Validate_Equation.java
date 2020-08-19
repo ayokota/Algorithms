@@ -1,7 +1,9 @@
 package practice;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Created by ayokota on 8/12/20.
@@ -51,10 +53,12 @@ public class Validate_Equation {
             } else if(c == ')') {
                 return result.toString();
             } else {
-                
+
                 result.append(c);
             }
         }
+
+        Arrays.stream(new int[]{1,2,3,4,5}).boxed().collect(Collectors.toList());
 
         return result.toString();
     }
