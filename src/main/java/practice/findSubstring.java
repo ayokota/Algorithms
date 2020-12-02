@@ -21,7 +21,7 @@ public class findSubstring {
         int totalLen = len * numWords;
 
 
-        for(int i = 0; i < s.length() - totalLen; i++) {
+        for(int i = 0; i <= s.length() - totalLen; i++) {
 
             Map<String, Integer> seen = new HashMap<>();
 
@@ -29,7 +29,7 @@ public class findSubstring {
             for(int j = 0; j < totalLen; j += len) {
 
                 String substr = s.substring(i + j, i + j + len);
-
+                System.out.println(substr);
                 if(!wordCounter.containsKey(substr)) {
                     found = false;
                     break;
